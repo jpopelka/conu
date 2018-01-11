@@ -52,5 +52,8 @@ rpm: sdist
 srpm: sdist
 	rpmbuild ./*.spec -bs --define "_sourcedir ${PWD}" --define "_specdir ${PWD}" --define "_builddir ${PWD}" --define "_srcrpmdir ${PWD}" --define "_rpmdir ${PWD}"
 
-rpm-in-mock: srpm
+rpm-in-mock-f27: srpm
 	mock --rebuild -r fedora-27-x86_64 ./*.src.rpm
+
+rpm-in-mock-el7: srpm
+	mock --rebuild -r epel-7-x86_64 ./*.src.rpm
